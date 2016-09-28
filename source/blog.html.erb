@@ -1,0 +1,73 @@
+---
+pageable: true
+per_page: 8
+---
+<!DOCTYPE html>
+<html lang="en">
+<%= partial "header" %>
+<body>
+    <%= partial "nav" %>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <div class="row">
+
+            <!-- Blog Entries Column -->
+            <div class="col-md-8">
+
+                <h1 class="page-header">
+                    Recent articles
+                </h1>
+
+        <% page_articles.each_with_index do |article, i| %>
+		            <h2>
+			                 <%= link_to article.title, article %>
+                </h2>
+                <p class="lead">
+		                  by <a href="index.php"><%= article.data.author %></a>
+                </p>
+		            <p><span class="glyphicon glyphicon-time"></span> Posted on <%= article.date.strftime('%b %e') %></p>
+            		<p><%= article.summary(300) %></p>
+            		<a class="btn btn-default" href="<%= article.url %>">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+
+                <hr>
+        <% end %>
+
+                <!-- Pager -->
+                <% if paginate && num_pages > 1 %>
+
+                  <ul class="pager">
+                  <% if prev_page %>
+                    <li class="previous"><%= link_to '&larr; Previous', prev_page %></li>
+                  <% end %>
+                  <p>Page <%= page_number %> of <%= num_pages %></p>
+                  <% if next_page %>
+                  <li class="next"><%= link_to '&rarr; Next', next_page %></li>
+                  <% end %>
+                <% end %>
+
+
+            </div>
+
+            <%= partial "sidebar" %>
+
+        </div>
+        <!-- /.row -->
+
+        <hr>
+
+        <%= partial "footer" %>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
