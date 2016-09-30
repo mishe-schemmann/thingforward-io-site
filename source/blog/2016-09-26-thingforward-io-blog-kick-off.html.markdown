@@ -1,5 +1,5 @@
 ---
-title: ThingForward.io – Blog Kick-off
+title: "ThingForward.io: Blog Kick-off"
 date: 2016-09-26 00:00 UTC
 tags: general
 author: Andreas
