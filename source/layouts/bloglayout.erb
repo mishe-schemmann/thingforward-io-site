@@ -49,7 +49,7 @@
 		     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
 		      *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables */
 		      	var disqus_config = function () {
-		          this.page.url = "www.thingforward.io";  // Replace PAGE_URL with your page's canonical URL variable
+		          this.page.url = "http://www.thingforward.io/<%= current_page.path %>";  // Replace PAGE_URL with your page's canonical URL variable
 			        this.page.identifier = "<%= current_page.path %>"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
 			};
 			      (function() { // DON'T EDIT BELOW THIS LINE
@@ -74,6 +74,7 @@
     <!-- Bootstrap Core JavaScript -->
     <script src="/js/bootstrap.min.js"></script>
 
+<script id="dsq-count-scr" src="//thingforwardio.disqus.com/count.js" async></script>
 </body>
 
 </html>
