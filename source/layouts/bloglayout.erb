@@ -15,7 +15,13 @@
 			              <%= current_article.title %>
                 </h1>
                 <p class="lead">
-                      by <a href="index.php"><%= current_article.data.author %></a>
+                  <%
+                  twhandle = "thingforward"
+                  if current_article.data.authortwitter && current_article.data.authortwitter.size > 0
+                    twhandle = current_article.data.authortwitter
+                  end
+                  %>
+                      by <a href="https://twitter.com/<%= twhandle %>"><%= current_article.data.author %></a>
                 </p>
                 <p><span class="glyphicon glyphicon-time"></span> Posted on <%= current_article.date.strftime('%b %e') %></p>
 

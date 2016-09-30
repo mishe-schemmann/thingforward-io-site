@@ -25,7 +25,14 @@ per_page: 8
 			                 <%= link_to article.title, article %>
                 </h2>
                 <p class="lead">
-		                  by <a href="index.php"><%= article.data.author %></a>
+                  <%
+                  twhandle = "thingforward"
+                  tw = article.data[:authortwitter]
+                  if tw && tw.size > 0
+                    twhandle = tw
+                  end
+                  %>
+                      by <a href="https://twitter.com/<%= twhandle %>"><%= article.data[:author] %></a>
                 </p>
 		            <p><span class="glyphicon glyphicon-time"></span> Posted on <%= article.date.strftime('%b %e') %></p>
             		<p><%= article.summary(300) %></p>
