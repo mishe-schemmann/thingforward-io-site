@@ -15,7 +15,13 @@
 			              <%= current_article.title %>
                 </h1>
                 <p class="lead">
-                      by <a href="index.php"><%= current_article.data.author %></a>
+                  <%
+                  twhandle = "thingforward"
+                  if current_article.data.authortwitter && current_article.data.authortwitter.size > 0
+                    twhandle = current_article.data.authortwitter
+                  end
+                  %>
+                      by <a href="https://twitter.com/<%= twhandle %>"><%= current_article.data.author %></a>
                 </p>
                 <p><span class="glyphicon glyphicon-time"></span> Posted on <%= current_article.date.strftime('%b %e') %></p>
 
@@ -43,8 +49,8 @@
 		     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
 		      *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables */
 		      	var disqus_config = function () {
-		          this.page.url = "thingforward.io";  // Replace PAGE_URL with your page's canonical URL variable
-			  this.page.identifier = "1234"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+		          this.page.url = "http://www.thingforward.io/<%= current_page.path %>";  // Replace PAGE_URL with your page's canonical URL variable
+			        this.page.identifier = "<%= current_page.path %>"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
 			};
 			      (function() { // DON'T EDIT BELOW THIS LINE
 			          var d = document, s = d.createElement('script');
@@ -68,6 +74,7 @@
     <!-- Bootstrap Core JavaScript -->
     <script src="/js/bootstrap.min.js"></script>
 
+<script id="dsq-count-scr" src="//thingforwardio.disqus.com/count.js" async></script>
 </body>
 
 </html>

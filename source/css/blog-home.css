@@ -20,9 +20,9 @@ footer {
   background-color: #222222;
 }
 
-.posttitle {
-  font-family: 'Londrina Shadow'
-}
+/*h1,h2,h3,h4 {
+  font-family: 'Scope One', sans-serif;
+}*/
 
 .navbar-nav > li > a {
   padding-top: 10px;

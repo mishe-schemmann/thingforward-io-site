@@ -1,4 +1,4 @@
-## Information with respect to §5 Telemediengesetz:
+# Information with respect to §5 Telemediengesetz
 This website is operated by
 
 Digital Incubation and Growth GmbH
