@@ -7,7 +7,7 @@ authortwitter: aschmidt75
 ---
 
 On Tuesday, 4th October, Oliver and I participated in our first German bar camp
-in D&uuml;sseldorf on the hype topic Internet of Things (IoT): [www.iotbarcamp.de](www.iotbarcamp.de).
+in D&uuml;sseldorf on the hype topic Internet of Things (IoT): [www.iotbarcamp.de](http://www.iotbarcamp.de/).
 I would like to share my personal notes on the talks I heard and my general
 impressions of the camp.
 
