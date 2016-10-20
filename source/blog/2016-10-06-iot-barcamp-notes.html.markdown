@@ -1,7 +1,7 @@
 ---
 title: IoT Barcamp Notes
 date: 2016-10-06 11:26 UTC
-tags: meetup
+tags: General
 author: Andreas
 authortwitter: aschmidt75
 ---

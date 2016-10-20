@@ -1,7 +1,7 @@
 ---
 title: "Embedded Developers vs. Web Developers: some figures"
 date: 2016-09-28 00:00 UTC
-tags: general
+tags: General
 author: Andreas
 authortwitter: aschmidt75
 ---
