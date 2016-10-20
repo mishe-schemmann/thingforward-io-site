@@ -1,7 +1,7 @@
 ---
 title: Does REST for small devices make sense?
 date: 2016-10-11 13:28 UTC
-tags: REST, CoAP
+tags: Tech
 author: Andreas
 authortwitter: aschmidt75
 ---
