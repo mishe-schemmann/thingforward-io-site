@@ -32,9 +32,9 @@ per_page: 8
                     twhandle = tw
                   end
                   %>
-                      by <a href="https://twitter.com/<%= twhandle %>"><%= article.data[:author] %></a>
+                      <p><span class="glyphicon glyphicon-time"></span> Posted on <%= article.date.strftime('%b %e') %> by <a href="https://twitter.com/<%= twhandle %>"><%= article.data[:author] %></a></p>
                 </p>
-		            <p><span class="glyphicon glyphicon-time"></span> Posted on <%= article.date.strftime('%b %e') %></p>
+
             		<p><%= article.summary(300) %></p>
             		<a class="btn btn-default" href="<%= article.url %>">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
 

@@ -9,6 +9,11 @@ html {
 
 body {
     padding-top: 90px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+  background-color: #F5F5F5;
+}
+
+a {
+  color: #BF7600;
 }
 
 footer {
@@ -27,7 +32,6 @@ footer {
 .navbar-nav > li > a {
   padding-top: 10px;
   padding-bottom: 10px;
-  line-height: 40px;
   font-size: 1.25em;
 }
 
@@ -38,4 +42,41 @@ img[alt=w100] {
   margin-bottom: 2em;
   margin-left: auto;
   margin-right: auto;
+}
+
+.well {
+  background-color: #BFBFBF;
+}
+
+.index-well {
+  margin-top: 20px;
+}
+
+.navbar {
+  background-color: #F49700;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+  color: #7F4F00;
+}
+
+.nav > li > a {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.navbar-nav > li > p {
+  padding-top: 23px;
+  padding-bottom: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+  font-size: 1.25em;
+}
+
+.page-header {
+  margin-top: 15px;
+}
+
+hr {
+  border: solid #CCCCCC 1px;
 }
