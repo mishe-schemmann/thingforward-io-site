@@ -7,24 +7,23 @@ authortwitter: aschmidt75
 ---
 
 This tech post is about two small ESP8266-based boards, the [Wemos D1 Mini](http://wemos.cc)
-and the [NodeMCU](http://www.nodemcu.com/index_en.html) and how to get started with a development
-environment. Both boards can also be programmed and flashed by using the well known
-Arduino IDE, but i rather enjoy having my own code editor and tool chain ready on the command line.
+and the [NodeMCU](http://www.nodemcu.com/index_en.html) and how to create a development
+environment. Both boards can be programmed and flashed with the well known
+Arduino IDE, but I rather enjoy having my own code editor and tool chain at hand on the command line.
 
 I prefer using [PlatformIO](http://www.platformio.org) for a number of reasons:
 
-* It is built upon Python (2.7), and thus available for a number of platforms (Win, OSX, Linux)
-* It completely handles the board/platform-specific toolchain underneath: Cross-compilers, linkers, flashing etc.
-* It comes with a library model, allowing you to simply install and manage custom libraries
+* It is built upon Python (2.7), and therefore suitable for a number of platforms (Win, OSX, Linux)
+* It completely manages the board/platform-specific toolchain underneath: cross-compilers, linkers, flashing etc.
+* It comes with a library model that allows you to simply install and manage custom libraries
 
-Let's get going!
+Here we go!
 
 ## Install the PlatformIO Client
 
 PlatformIO offers a full IDE based on Atom, but we're going to start with the command line tools only.
 Installing the tool is quite easy, and can be done via python `pip`, homebrew, or by python script. For full
-documentation, make sure to check [their great doc site](http://docs.platformio.org/en/stable/installation.html#installation-methods). I think for most cases,
-pip or brew will do:
+documentation, make sure to check [their great doc site](http://docs.platformio.org/en/stable/installation.html#installation-methods). But for most cases, pip or brew will do:
 
 ```bash
 $ pip search platformio
@@ -40,7 +39,7 @@ From: https://github.com/Homebrew/homebrew-core/blob/master/Formula/platformio.r
 ```
 
 
-What you get is an executable, `platformio`, which can be abbreviated `pio`, so:
+What you get is an executable, `platformio`, abbreviated as `pio`, so:
 
 ```bash
 $ pio --help
@@ -66,14 +65,14 @@ Commands:
   upgrade   Upgrade PlatformIO to the latest version
 ```
 
-Let's create a project for one of our boards.
+Now, let's create a project for one of our boards.
 
 ## Creating a project
 
 As a first step, we need to select the board or platform type we'd like to
 code for. `pio` has a `boards` command that can show what platforms are
-currently installed (`--installed`), and that can search for all available
-boards based on keywords. Let's do so for the ESP-based boards mentioned above:
+currently installed (`--installed`)and offers a keyword search for all available
+boards. Let's do so for the ESP-based boards mentioned above:
 
 ```bash
 $ pio boards nodemcu
@@ -92,11 +91,11 @@ d1_mini               ESP8266        80Mhz     4096kB  80kB   WeMos D1 R2 & mini
 ```
 
 Luckily, my boards are supported. For a complete list, just execute `pio boards`, or browse
-the complete catalog on the [web site](http://platformio.org/boards).
+the complete catalogue on the [web site](http://platformio.org/boards).
 
-To create a project, we'll use the `init` command. It takes a board id (i start with NodeMCU), a directory and
-an ide integration, all are optional. I choose CLion as the IDE integration, a number of others are possible as well.
-If a directory is not given, it will create the project in the current directory, which is what i do:
+To create a project, we'll use the `init` command. It takes a board id (I start with NodeMCU), a directory and
+an ide integration, all of which are optional. I choose CLion as the IDE integration, although a number of others are also viable alternatives.
+If a directory is not given, it will create the project in the current directory, which is what I do:
 
 ```bash
 ubuntu@ubuntu-xenial:~$ mkdir esp-project-1
@@ -135,8 +134,8 @@ Project has been successfully initialized!
 (...)
 ```
 
-That took a while, because PlatformIO managed the complete toolchain that is necessary
-to build for the Tensilica xtensa processors, and flashing it to the boards. It shows
+That took a while, because PlatformIO managed the complete toolchain necessary
+to build for Tensilica xtensa processors, and for flashing it to the boards. It now shows
 what packages have been installed:
 
 * `espressif8266`
@@ -144,7 +143,7 @@ what packages have been installed:
 * `tool-esptool`: flashing
 * `tool-espotapy`: Over-the-air updates.
 
-Where did they go to? `~/.platformio`:
+Where did they go? `~/.platformio`:
 
 ```bash
 $ ls -al ~/.platformio/packages/
@@ -158,7 +157,7 @@ drwx------ 2 ubuntu ubuntu 4096 Nov 23 10:45 tool-esptool
 drwx------ 4 ubuntu ubuntu 4096 Nov 23 10:45 tool-scons
 ```
 
-So that is quite neat and user-separted. Plus, of course, we have a skeleton
+So that is quite neat and user-targeted. Plus, of course, we now have a skeleton
 project in our current directory:
 
 ```bash
@@ -179,8 +178,7 @@ drwxrwxr-x 2 ubuntu ubuntu 4096 Nov 23 10:45 src
 
 ## Adding some code
 
-PlatformIO manages a `platformio.ini` file where additional settings can be made.
-Plus some extra, a `.gitignore`, TravisCI configuration and CMake files. `lib/` and
+PlatformIO manages a `platformio.ini` file where additional settings can be made as well as a few extras,e.g., a `.gitignore`, TravisCI configuration and CMake files. `lib/` and
 `src/` are empty, so let's add a simple sketch.
 
 `src/main.cpp`:
@@ -217,9 +215,9 @@ text	   data	    bss	    dec	    hex	filename
 =========================================================================== [SUCCESS] Took 2.20 seconds
 ```
 
-That was successful, and if left us with a compiled firmware binary in `.pioenvs/nodemcu`.
+That was successful, and it provided us with a compiled firmware binary in `.pioenvs/nodemcu`.
 
-To the run command, the `--target` (or `-t`) parameter is important, as it controls behaviour within the make process.
+The `--target` (or `-t`) parameter is important for the run command, as it controls behaviour within the make process.
 To clean, use
 
 ```bash
@@ -229,16 +227,17 @@ Removed .pioenvs/nodemcu/firmware.elf
 (...)
 ```
 
-For those of you that want to understand, what's going on, use `-v` to enable the verbose mode. It will going
-to be a lot chattier then, but one can see what parts of the toolchain are called, and how:
+For those of you that want the detailed view of what is going on, use `-v` to enable the verbose mode. It will get
+a lot chattier then, but you can see what the different parts of the toolchain are called, and how they work:
 
 ```bash
 $ pio run -v
 (...)
 ```
 
-A lot of detailed but very helpful messages pop up, showing what is compiled, and how i.e. `esptool` is used
+A lot of detailed but very helpful messages pop up, showing what is compiled, and how, i.e., `esptool` is used
 to combine boot loader and firmware.
+
 We can use the xtensa-specific `objdump` to inspect the firmware ELF file:
 
 ```bash
@@ -247,8 +246,8 @@ $ ~/.platformio/packages/toolchain-xtensa/bin/xtensa-lx106-elf-objdump -x .pioen
 
 ## Flashing
 
-Like the `clean` target above, a `upload` target exists to flash the firmware to the device. What device?
-Plugging in the NodeMCU board to USB, the `device` command will show:
+Like the `clean` target above, an `upload` target exists to flash the firmware to the device. What device?
+Plugging in the NodeMCU board to the USB, the `device` command will show:
 
 ```bash
 $ pio device list
@@ -258,9 +257,9 @@ Hardware ID: USB VID:PID=10C4:EA60 SER=0001 LOCATION=20-1
 Description: CP2102 USB to UART Bridge Controller - CP2102 USB to UART Bridge Controller
 ```
 
-I this case, it's `/dev/cu.SLAB_USBtoUART`, using the CP2102 driver. On Linux, it should be part of the kernel and thus enabled without need for configuration. On OSX and Windows, make sure to have the [CP2102 driver from Silabs installed](http://www.silabs.com/products/mcu/pages/usbtouartbridgevcpdrivers.aspx).
+In this case, it's `/dev/cu.SLAB_USBtoUART`, using the CP2102 driver. On Linux, it should be part of the kernel and can be enabled without the need for configuration. On OSX and Windows, make sure to have the [CP2102 driver from Silabs installed](http://www.silabs.com/products/mcu/pages/usbtouartbridgevcpdrivers.aspx).
 
-Since it's the only device that is plugged in right now, PlatformIO uses it right away when i:
+Since it's the only device that is plugged in right now, PlatformIO uses it right away when I:
 
 ```bash
 $ pio run --target upload
@@ -298,14 +297,13 @@ Hi from NodeMCU
 Hi from NodeMCU
 ```
 
-That's what i put in the main `loop()`, just printing out the message and waiting for a second.
+That's what I put in the main `loop()`. Printing out the message now and waiting for the response.   
 
-To quit the terminal session, hit `Ctrl+]`, CTRL-C does no work here.
+To quit the terminal session, hit `Ctrl+]`. CTRL-C does not work here.
 
 ## Using Libraries
 
-Where PlatformIO really shines in my perception is Library management. There are a lot
-of libraries around to support developing for embedded, especially for shields and components.
+There are a lot of other libraries that support developing for embedded, especially for shields and components, but where PlatformIO really shines, in my opinion, is library management. 
 The `lib` command shows the core of library management within PlatformIO:
 
 ```bash
@@ -327,9 +325,9 @@ Commands:
   update     Update installed libraries
 ```
 
-Search is quite powerful, as it browses the Library catalog. For a web ui, go to [http://platformio.org/lib](http://platformio.org/lib) to see it only.
+Search is quite powerful as it browses the library catalogue. To view a web ui, go to [http://platformio.org/lib](http://platformio.org/lib).
 
-As an example, i wanted to simplyfy logging and found the [AdvancedSerial Library](https://github.com/klenov/advancedSerial). It is also available on PlatformIO:
+To give you just one example of its power: I wanted to simplfy logging in and found the [AdvancedSerial Library](https://github.com/klenov/advancedSerial). It is also available on PlatformIO:
 
 ```bash
 $ pio lib search advancedserial
@@ -339,7 +337,7 @@ Found 1 libraries:
 -------------------------------------------------------------------------------------------------------------------------[1095 ] advancedSerial   arduino, atmelavr, atmelsam, espressif8266, intel_arc32, teensy "Vasily Klenov": An Arduino library with additions to vanilla Serial.print(). Chainable methods and verbosity levels. Suitable for debug messages.
 ```
 
-The Compatibility column tells me that it should work on my ESP boards, so i install it using:
+The compatibility column tells me that it should work on my ESP boards, so i install it using:
 
 ```bash
 $ pio lib install advancedserial
@@ -352,8 +350,8 @@ Unpacking  [####################################]  100%
 advancedSerial @ 1.2.3 has been successfully installed!
 ```
 
-It went to a subdirectory in `.piolibdeps/`, together with some examples as well.
-It can be used in the sketch:
+It went into a subdirectory in `.piolibdeps/`, together with some examples.
+It can now be used in the sketch:
 
 ```cpp
 
@@ -372,7 +370,7 @@ void loop() {
 }
 ```
 
-A call to `pio run` shows that it is automatically compiled:
+A call to `pio run` shows that it was automatically compiled:
 
 ```bash
 $ platformio run
@@ -396,14 +394,14 @@ text	   data	    bss	    dec	    hex	filename
 
 ## Custom libraries
 
-Now what to do if a library is not supported by PlatformIO? The project
+What can you do if a library is not supported by PlatformIO? The project
 skeleton includes a `lib/` directory, where custom library code can be placed.
-A bit of customization is necessary, which is not really intuitive, but
-documented.
+A bit of customisation is necessary, which is not overly intuitive, but
+well documented.
 
-For my sample project, i use parts of Seeedstudio's Grove Kit, and a
-4 digit display. There is code for it on [Github](https://github.com/Seeed-Studio/Grove_4Digital_Display),
-so i'm going to clone this to an extra directory:
+For my sample project, I use parts of Seeedstudio's Grove Kit, and a
+4-digit display. There is code for it on [Github](https://github.com/Seeed-Studio/Grove_4Digital_Display),
+so I'm going to clone this to an extra directory:
 
 ```bash
 $ mkdir vendor
@@ -412,16 +410,16 @@ $ git clone https://github.com/Seeed-Studio/Grove_4Digital_Display
 $ cd ..
 ```
 
-Important: For PlatformIO to pick up the code, `lib/` needs another directory below, `private_lib`.
-I copy over the two files that i need:
+Important: For PlatformIO to pick up the code, `lib/` needs another directory as shown below, `private_lib`.
+I copy over the two files that I need:
 
 ```bash
 $ mkdir lib/private_lib
 $ cp vendor/Grove_4Digital_Display/DigitalTube/TM1637.* ./lib/private_lib/
 ```
 
-and include it in my sketch. The Display is connected to the I2C D1/D2 socket, and i
-use random values to display them every second within the loop() function:
+and include it in my sketch. The display is connected to the I2C D1/D2 socket, and I
+use random values to display them every second within the loop()function:
 
 `src/main.cpp`:
 
@@ -482,15 +480,15 @@ Indexing .pioenvs/nodemcu/lib/libprivate_lib.a
 ## Additional stuff
 
 PlatformIO offers a bunch of IDE integration capabilities. An IDE can be chosen
-when `init`ializing a project, using the `--ide` switch. At present,
+when `init`ialising a project, using the `--ide` switch. At present,
 Atom, CLion, Codeblocks, Eclipse, Emacs, Netbeans, QTCreator, Sublime and Visualstudio
-are supported, each integration is documented.
+are supported, and each integration is well documented.
 
-This post only covered some basics, the `platformio.ini` offers much more capabilities,
-i.e. supporting multiple targets/boards, running custom scripts before/after actions,
+This post only covered the basics. The `platformio.ini` offers many more capabilities,
+i.e., supporting multiple targets/boards, running custom scripts before/after actions,
 etc.
 
-One tweak for flashing ESP8266 modules is to increase the serial port Baud rate when uploading.
+One useful tweak for flashing ESP8266 modules is to increase the serial port Baud rate when uploading.
 In `platformio.ini`, add an `upload_speed` setting to the environment, i.e.:
 
 ```
@@ -501,9 +499,10 @@ framework = arduino
 upload_speed = 921600
 ```
 
-Uploading the ca. 220k firmware file only takes 15 seconds instead of 30.
+Note: Uploading the ca. 220k firmware file only took 15 seconds instead of 30.
 
 That's it for now. I hope this gives you a good foundation to start from when building
 your own embedded projects. Have fun!
 
 Andreas
+o
