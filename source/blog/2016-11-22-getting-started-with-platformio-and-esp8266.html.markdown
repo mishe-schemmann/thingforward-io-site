@@ -98,9 +98,9 @@ an ide integration, all of which are optional. I choose CLion as the IDE integra
 If a directory is not given, it will create the project in the current directory, which is what I do:
 
 ```bash
-ubuntu@ubuntu-xenial:~$ mkdir esp-project-1
-ubuntu@ubuntu-xenial:~$ cd esp-project-1/
-ubuntu@ubuntu-xenial:~/esp-project-1$ pio init -b nodemcu --ide clion
+~$ mkdir esp-project-1
+~$ cd esp-project-1/
+~/esp-project-1$ pio init -b nodemcu --ide clion
 (...))
 
 The current working directory /home/ubuntu/esp-project-1 will be used for project.
@@ -135,7 +135,7 @@ Project has been successfully initialized!
 ```
 
 That took a while, because PlatformIO managed the complete toolchain necessary
-to build for Tensilica xtensa processors, and for flashing it to the boards. It now shows
+to build for Tensilica Xtensa processors, and for flashing it to the boards. It now shows
 what packages have been installed:
 
 * `espressif8266`
@@ -157,7 +157,7 @@ drwx------ 2 ubuntu ubuntu 4096 Nov 23 10:45 tool-esptool
 drwx------ 4 ubuntu ubuntu 4096 Nov 23 10:45 tool-scons
 ```
 
-So that is quite neat and user-targeted. Plus, of course, we now have a skeleton
+So that is quite neat and separated by user environments. Plus, of course, we now have a skeleton
 project in our current directory:
 
 ```bash
@@ -303,7 +303,7 @@ To quit the terminal session, hit `Ctrl+]`. CTRL-C does not work here.
 
 ## Using Libraries
 
-There are a lot of other libraries that support developing for embedded, especially for shields and components, but where PlatformIO really shines, in my opinion, is library management. 
+There are a lot of other libraries that support developing for embedded, especially for shields and components, but where PlatformIO really shines, in my opinion, is library management.
 The `lib` command shows the core of library management within PlatformIO:
 
 ```bash
@@ -505,4 +505,3 @@ That's it for now. I hope this gives you a good foundation to start from when bu
 your own embedded projects. Have fun!
 
 Andreas
-o
