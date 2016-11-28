@@ -1,5 +1,5 @@
 ---
-title: Getting started with PlatformIO and ESP8266 - Libraries
+title: Getting started with PlatformIO and ESP8266 - and Library management
 date: 2016-11-22 10:25 UTC
 tags: Tech
 author: Andreas
