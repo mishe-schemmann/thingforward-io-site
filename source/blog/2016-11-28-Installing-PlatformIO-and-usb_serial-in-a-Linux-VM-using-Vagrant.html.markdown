@@ -9,8 +9,8 @@ authortwitter: aschmidt75
 # Installing PlatformIO and usb_serial in a Linux VM using Vagrant
 
 This post describes how to set up an Ubuntu Linux VM with PlatformIO, including
-necessary steps to warp the USB-to-serial interface of development boards hardware into
-the virtual machine. PlatformIO maintains a very good documentation, but sometimes
+necessary steps for warping the USB-to-serial interface of development boards hardware into
+a virtual machine. PlatformIO produces very good documentation, but sometimes
 things can become tricky when trying to set up a working environment inside a virtual machine,
 and perhaps on different Linux distributions.
 
@@ -21,7 +21,7 @@ This post covers Ubuntu and ArchLinux, using VirtualBox and Vagrant.
 * VirtualBox
 * Vagrant
 
-## Determine USB port of your board
+## Determine the USB port of your board
 
 Plug in your board into a free USB port.
 
@@ -42,8 +42,8 @@ idProduct          0xea60 CP210x UART Bridge / myAVR mySmartUSB light
 
 ### OSX
 
-For osx, we use `ioreg` to show registered devices. Important: `-x` flag gives
-HEX output, which is needed by VirtualBox!
+For osx, we use `ioreg` to show registered devices. Important: `-x` flag offers
+a HEX output, which is needed by VirtualBox!
 
 ```bash
 $ ioreg -p IOUSB -w0 -l -x
@@ -61,7 +61,7 @@ $ ioreg -p IOUSB -w0 -l -x
     }
 ```
 
-Note both `idProduct` and `idVendor`, we're going to need them later. These two
+Not; We will need both `idProduct` and `idVendor`later. These two
 numbers will allow Vagrant/VirtualBox to identify your device.
 
 ## Setting up the VM using Vagrant
@@ -71,7 +71,7 @@ numbers will allow Vagrant/VirtualBox to identify your device.
 For this setup, we're going to take an Ubuntu1404-desktop virtual machine image.
 Why "desktop"? Because it usually has drivers such as `usbserial` and `ftdi`
 enabled, which we need. Server images come without these drivers, so they won't
-be working correctly.
+work correctly.
 
 ```bash
 $ vagrant init boxcutter/ubuntu1404-desktop
@@ -137,7 +137,7 @@ Bus 002 Device 001: ID 1d6b:0001 Linux Foundation 1.1 root hub
 
 ```
 
-We're going to need `pip` later, so:
+We're going to need `pip` later too, so:
 
 ```bash
 root@vagrant:~# apt-get install python-pip
@@ -195,7 +195,7 @@ Packages (7) python2-appdirs-1.4.0-4  python2-packaging-16.8-1  python2-pyparsin
              python2-pip-8.1.2-1
 ```
 
-Some additional rights management, otherwise vagrant user may not pip-install packages.
+Some additional rights management, otherwise a vagrant user may not pip-install packages.
 
 ```bash
 $ sudo -i
@@ -218,7 +218,7 @@ $ sudo -i
 ~# chgrp staff /usr/local/bin /usr/bin /usr/lib/python2.7/site-packages/
 ```
 
-Log off and on again, as vagrant user:
+Log off and on again, as a vagrant user:
 ```bash
 vagrant@vagrant:~$ exit
 $ vagrant ssh
